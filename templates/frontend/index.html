@@ -1,0 +1,183 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<!-- ================= HERO SECTION ================= -->
+<section class="hero-section d-flex align-items-center">
+
+    <!-- Background Overlay Image -->
+    <div class="hero-overlay"></div>
+
+    <!-- Moving Particles -->
+    <div class="particles"></div>
+
+    <div class="container text-center hero-content">
+
+        <h1 class="hero-title slide-down">
+            WIN <span class="gold-text">BIG</span>
+        </h1>
+
+        <p class="hero-subtitle slide-up">
+            Join Our Exclusive Rugby Lottery & Stand a Chance to Become a Winner
+        </p>
+
+        <a href="{% url 'frontend:apply' %}" class="btn btn-lg hero-btn slide-up">
+            ENTER NOW
+        </a>
+
+    </div>
+
+    <!-- Floating + Rotating Rugby Ball -->
+    <div class="rugby-ball">
+        <img src="{% static 'frontend/images/rugby-ball.png' %}" alt="" width="100">
+    </div>
+
+</section>
+
+<!-- ============== TICKER ================ -->
+<div class="ticker">
+    <div class="ticker-content">
+        🎉 John won $250 • Sarah won $500 • 
+        Luca won $75,000 • Sofia won $120,000 • 
+        Mateo won $1,200 • Hiroshi won $300 • 
+        Priya won $250,000 JACKPOT! 🏆 • 
+        Carlos won $400 • Valentina won $950 • 
+        Oliver won $600 • Emma won $850 • 
+        Arjun won $1,500 • Isabella won $500,000 JACKPOT! 💰 • 
+        Liam won $700 • Camila won $1,100 • 
+        Diego won $4,500 • Elena won $2,500 • 
+        Mei won $350 • Rahul won $900 • 
+        Gabriela won $1,300 • Lucas won $8,000 • 
+        Emily won $15,000 • Thiago won $1,750 • 
+        Antonella won $65,000 • Sebastian won $1,000 • 
+        Rina won $450 • Jack won $5,000 • 
+        Zoe won $1,250 • Andres won $300,000 JACKPOT! 🎉 • 
+        Bruno won $2,200 • Victoria won $980 • 
+        Hunter won $40,000 • Aria won $1,600 • 
+        Finn won $3,500 • Daniela won $875 • 
+        Santiago won $1,000,000 JACKPOT! 🚀 •
+    </div>
+</div>
+
+
+<!-- ================= FEATURES SECTION ================= -->
+<section class="features-section py-5">
+    <div class="container text-center">
+
+        <h2 class="section-title reveal">WHY PLAY WITH US?</h2>
+
+        <div class="row mt-5">
+
+            <div class="col-md-4">
+                <div class="feature-card reveal">
+                    <h4>💰 Massive Prizes</h4>
+                    <p>Win huge rewards every week in our exclusive rugby draws.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature-card reveal">
+                    <h4>⚡ Instant Results</h4>
+                    <p>Fast and transparent lottery system with real-time updates.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature-card reveal">
+                    <h4>🏉 Fair Play</h4>
+                    <p>Secure and trusted platform designed for real rugby fans.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ================= JACKPOT SECTION ================= -->
+
+<section class="jackpot-section text-center py-5">
+    <div class="container">
+
+        <h2 class="jackpot-title reveal">CURRENT JACKPOT</h2>
+
+        <div class="jackpot-box reveal">
+            <h1 class="jackpot-amount">
+                $<span id="jackpotCounter">0</span>
+            </h1>
+            <p class="jackpot-sub">Next Draw In:</p>
+            <div id="countdown" class="countdown-timer"></div>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="testimonials py-5 text-center">
+    <div class="container">
+        <h2 class="section-title">What Players Say</h2>
+
+        <div id="testimonialCarousel" class="carousel slide mt-5" data-bs-ride="carousel">
+
+            <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                    <p class="testimonial-text">"I won $500 in my first week! Absolutely amazing!"</p>
+                    <h6>- Michael</h6>
+                </div>
+
+                <div class="carousel-item">
+                    <p class="testimonial-text">"I couldn’t believe it when I hit $25,000! This platform is real!"</p>
+                    <h6>- Luca</h6>
+                </div>
+
+                <div class="carousel-item">
+                    <p class="testimonial-text">"Fast payouts and very secure. Got my $1,200 the same day."</p>
+                    <h6>- Sarah</h6>
+                </div>
+
+                <div class="carousel-item">
+                    <p class="testimonial-text">"I just won $75,000! The jackpot is life-changing!"</p>
+                    <h6>- Mateo</h6>
+                </div>
+
+                <div class="carousel-item">
+                    <p class="testimonial-text">"Best rugby lottery platform online! Won $3,500 last month."</p>
+                    <h6>- Daniel</h6>
+                </div>
+
+                <div class="carousel-item">
+                    <p class="testimonial-text">"I’ve won multiple times. $800, $1,500 and even $5,000!"</p>
+                    <h6>- Priya</h6>
+                </div>
+
+                <div class="carousel-item">
+                    <p class="testimonial-text">"I hit the $250,000 JACKPOT! Still feels unreal!"</p>
+                    <h6>- Sebastian</h6>
+                </div>
+
+                <div class="carousel-item">
+                    <p class="testimonial-text">"Super easy to join and I won $950 in my first draw."</p>
+                    <h6>- Emily</h6>
+                </div>
+
+                <div class="carousel-item">
+                    <p class="testimonial-text">"Won $40,000 and the payout was smooth and quick."</p>
+                    <h6>- Arjun</h6>
+                </div>
+
+                <div class="carousel-item">
+                    <p class="testimonial-text">"This is the only lottery platform I trust. Won $2,200 recently!"</p>
+                    <h6>- Camila</h6>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}

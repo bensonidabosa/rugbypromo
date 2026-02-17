@@ -1,0 +1,91 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block title %}Enter Lottery | Rugby Lottery{% endblock %}
+
+{% block content %}
+<!-- ================= BREADCRUMB ================= -->
+
+<!-- <section class="breadcrumb-section">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb custom-breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="index.html">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    Enter Lottery
+                </li>
+            </ol>
+        </nav>
+    </div>
+</section> -->
+<!-- ================= BREADCRUMB ================= -->
+
+<section class="breadcrumb-section fade-in">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb custom-breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="index.html">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    🏉 Enter Lottery
+                </li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+
+<section class="form-section d-flex align-items-center py-5">
+    <div class="container">
+
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-8">
+                <div class="lottery-form-container">
+
+                    <h2 class="text-center mb-4">Enter The {{draw.title}}</h2>
+                    <p class="text-warning">${{draw.ticket_price}} per ticket</p>
+                    <form method="POST" novalidate>
+                        {% csrf_token %}
+
+                        <!-- Non-field errors (form-wide errors) -->
+                        {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {% for error in form.non_field_errors %}
+                            <p class="mb-0">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+
+                        {% for field in form %}
+                        <div class="mb-3">
+
+                            <!-- Input Field -->
+                            {{ field }}
+
+                            <!-- Field Errors -->
+                            {% if field.errors %}
+                            <div class="text-danger mt-1 small">
+                                {% for error in field.errors %}
+                                <div>{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+
+                        </div>
+                        {% endfor %}
+
+                        <button type="submit" class="btn hero-btn w-100 fw-bold">
+                            SUBMIT ENTRY
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}
