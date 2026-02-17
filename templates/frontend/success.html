@@ -4,12 +4,52 @@
 {% block title %}Enter Lottery | Rugby Lottery{% endblock %}
 
 {% block content %}
-<h2>🎉 Entry Successful!</h2>
+<!-- ================= BREADCRUMB ================= -->
 
-<p>Your tracking code:</p>
+<section class="breadcrumb-section fade-in">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb custom-breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{% url 'frontend:home' %}">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    🏉 ENTRY CONFIRMED!
+                </li>
+            </ol>
+        </nav>
+    </div>
+</section>
 
-<h3 style="color: gold;">{{ tracking_code }}</h3>
 
-<p>Please save this code. You will also receive it via email.</p>
+<section class="success-section d-flex align-items-center text-center">
+    <div class="container">
+
+        <div class="success-box">
+
+            <h1 class="success-title">🎉 ENTRY CONFIRMED!</h1>
+
+            <p class="success-text">
+                Thank you for entering the Winners Rugby Lottery.
+            </p>
+
+            <div class="tracking-code-box">
+                Your Tracking Code:
+                <h3 id="trackingCode">TXXTYUOUNR</h3>
+            </div>
+
+            <p class="email-info">
+                📩 A confirmation email has been sent with your purchase details.
+                Please check your inbox.
+            </p>
+
+            <a href="{% url 'frontend:home' %}" class="btn hero-btn mt-4">
+                BACK TO HOME
+            </a>
+
+        </div>
+
+    </div>
+</section>
 
 {% endblock %}

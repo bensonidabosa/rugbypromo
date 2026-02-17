@@ -5,4 +5,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('frontend.urls', namespace='frontend')),
     path('draw/', include('draw.urls', namespace='draw')),
+    path('account/', include('account.urls', namespace='account')),
 ]

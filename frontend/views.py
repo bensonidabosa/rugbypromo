@@ -42,6 +42,8 @@ def success(request, tracking_code):
     return render(request, "frontend/success.html", {"tracking_code": tracking_code})
 
 
+def track_ticket_view(request):
+    return render(request, 'frontend/track_ticket.html')
 
 
 # @transaction.atomic

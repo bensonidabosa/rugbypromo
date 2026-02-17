@@ -1,0 +1,82 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block title %}Enter Lottery | Rugby Lottery{% endblock %}
+
+{% block content %}
+
+<!-- ================= BREADCRUMB ================= -->
+
+<section class="breadcrumb-section fade-in">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb custom-breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{% url 'frontend:home' %}">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    🏉 Track Ticket
+                </li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<!-- Track Section -->
+<section class="track-section d-flex align-items-center">
+    <div class="container text-center">
+
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-7 mb-5">
+                <div class="track-box">
+                    <h1 class="track-title">🎟 Track Your Ticket</h1>
+
+                    <form id="trackForm">
+                        <input type="text" id="trackInput" class="form-control track-input"
+                            placeholder="Enter your tracking code (e.g. RL-ABCD1234)" required>
+
+                        <button type="submit" class="btn hero-btn mt-3">
+                            CHECK RESULT
+                        </button>
+                    </form>
+
+                    <!-- RESULT BOX (Backend will control content) -->
+
+                    <div class="result-container mt-5">
+
+                        <!-- Change class below to:
+                    result-winner
+                    result-pending
+                    result-lost
+                -->
+
+                        <div class="ticket-result result-winner">
+
+                            <div class="result-header">
+                                <h3 class="result-title">🎉 Congratulations!</h3>
+                                <span class="result-badge">WINNER</span>
+                            </div>
+
+                            <div class="result-body">
+                                <p><strong>Tracking Code:</strong> RL-ABCD1234</p>
+                                <p><strong>Draw Date:</strong> March 30, 2026</p>
+                                <p><strong>Prize:</strong> $10,000 Grand Prize</p>
+                            </div>
+
+                            <div class="result-footer">
+                                📩 A confirmation email has been sent with your payout details.
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

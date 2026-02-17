@@ -25,6 +25,7 @@ body {
         opacity: 0;
         transform: translateY(-15px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -44,10 +45,12 @@ body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
-.logo {
-    font-weight: bold;
-    color: #f4b400 !important;
-    letter-spacing: 2px;
+.navbar-brand img {
+    width: 120px !important;
+}
+
+.footer-logo {
+    width: 160px;
 }
 
 .nav-item-custom {
@@ -135,6 +138,18 @@ body {
     /* margin-bottom: 10px; */
 }
 
+.submit-btn {
+    position: relative;
+    overflow: hidden;
+    background-color: #b87300;
+    /* background-color: #e10600; */
+    padding-inline: 20px;
+    font-size: 16px;
+    width: 200px;
+    color: #fff;
+    /* margin-bottom: 10px; */
+}
+
 /* Shine effect */
 .hero-btn::before {
     content: "";
@@ -176,6 +191,14 @@ body {
 
     .nav-item-custom {
         font-size: 14px;
+    }
+
+    .navbar-brand img {
+        width: 80px !important;
+    }
+
+    .footer-logo {
+        width: 100px;
     }
 }
 
@@ -503,14 +526,14 @@ body {
 }
 
 
-/* .custom-breadcrumb .breadcrumb-item.active {
+.custom-breadcrumb .breadcrumb-item.active {
     color: white;
     font-weight: bold;
 }
 
 .breadcrumb-item+.breadcrumb-item::before {
     color: #f4b400;
-} */
+}
 
 
 /* ================= LOTTERY PAGE ================= */
@@ -564,3 +587,384 @@ body {
 .form-message {
     font-weight: bold;
 }
+
+
+/* ================= SUCCESS PAGE ================= */
+
+.success-page {
+    background: linear-gradient(-45deg, #0b1f3a, #102c54);
+    min-height: 100vh;
+}
+
+.success-section {
+    min-height: 100vh;
+}
+
+.success-box {
+    max-width: 600px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 50px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(244, 180, 0, 0.4);
+    animation: fadeInSmooth 1s ease forwards;
+}
+
+.success-title {
+    color: #f4b400;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+.tracking-code-box {
+    margin: 30px 0;
+    padding: 20px;
+    border: 2px solid #f4b400;
+    border-radius: 10px;
+    background: rgba(244, 180, 0, 0.1);
+}
+
+.tracking-code-box h3 {
+    margin-top: 10px;
+    color: #ffffff;
+    letter-spacing: 2px;
+}
+
+.email-info {
+    margin-top: 20px;
+    font-size: 1rem;
+}
+
+
+
+/* ================= FOOTER ================= */
+
+/* .footer-section {
+    background: #09172b;
+    padding: 60px 0 20px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-logo {
+    color: #f4b400;
+    font-weight: bold;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+    position: relative;
+}
+
+.footer-links a:hover {
+    color: #f4b400;
+}
+
+.social-icons span {
+    font-size: 1.5rem;
+    margin-right: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.social-icons span:hover {
+    transform: scale(1.2);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 15px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+} */
+
+/* ================= PREMIUM FOOTER ================= */
+
+.premium-footer {
+    position: relative;
+    background: linear-gradient(-45deg, #09172b, #0b1f3a, #081424);
+    background-size: 400% 400%;
+    animation: footerGradient 15s ease infinite;
+    padding: 60px 0 25px;
+    color: white;
+    overflow: hidden;
+}
+
+@keyframes footerGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.footer-glow-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #e10600, #f4b400, #e10600);
+    box-shadow: 0 0 20px rgba(225, 6, 0, 0.8);
+}
+
+.footer-brand {
+    color: #f4b400;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.footer-tagline {
+    opacity: 0.8;
+    font-size: 0.95rem;
+}
+
+.footer-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-nav li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.footer-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: 0.3s;
+}
+
+.footer-nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: -4px;
+    background: #f4b400;
+    transition: 0.3s;
+}
+
+.footer-nav a:hover::after {
+    width: 100%;
+}
+
+.footer-nav a:hover {
+    color: #f4b400;
+}
+
+.footer-info {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+.highlight {
+    color: #e10600;
+    font-weight: bold;
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    font-size: 0.85rem;
+    opacity: 0.7;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+}
+
+
+/* ================= TRACK PAGE ================= */
+
+.track-section {
+    min-height: 100vh;
+    background: linear-gradient(-45deg, #0b1f3a, #0e2a4f);
+    padding-top: 120px;
+}
+
+.track-box {
+    max-width: 100%;
+    margin: auto;
+    background: rgba(255,255,255,0.05);
+    padding: 50px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(244,180,0,0.3);
+    animation: fadeInSmooth 1s ease forwards;
+}
+
+.track-title {
+    color: #f4b400;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.track-input {
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+    font-weight: bold;
+}
+
+.result-area {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.6s ease;
+}
+
+.result-area.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.status-winner {
+    background: #28a745;
+    color: white;
+}
+
+.status-lost {
+    background: #dc3545;
+    color: white;
+}
+
+.status-pending {
+    background: #f4b400;
+    color: black;
+}
+
+/* ================= RESULT BOX ================= */
+
+.result-container {
+    max-width: 700px;
+    margin: auto;
+}
+
+.ticket-result {
+    padding: 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.05);
+    border: 2px solid transparent;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+    transition: 0.4s ease;
+    animation: fadeInSmooth 0.8s ease forwards;
+}
+
+/* HEADER */
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.result-title {
+    font-weight: bold;
+    margin: 0;
+}
+
+/* BADGE */
+
+.result-badge {
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* BODY */
+
+.result-body p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+/* FOOTER */
+
+.result-footer {
+    margin-top: 25px;
+    font-size: 0.95rem;
+    opacity: 0.85;
+}
+
+/* ================= STATE STYLES ================= */
+
+/* WINNER */
+
+.result-winner {
+    border-color: #28a745;
+    box-shadow: 0 0 40px rgba(40,167,69,0.4);
+}
+
+.result-winner .result-title {
+    color: #28a745;
+}
+
+.result-winner .result-badge {
+    background: #28a745;
+    color: white;
+}
+
+/* PENDING */
+
+.result-pending {
+    border-color: #f4b400;
+    box-shadow: 0 0 40px rgba(244,180,0,0.4);
+}
+
+.result-pending .result-title {
+    color: #f4b400;
+}
+
+.result-pending .result-badge {
+    background: #f4b400;
+    color: black;
+}
+
+/* LOST */
+
+.result-lost {
+    border-color: #dc3545;
+    box-shadow: 0 0 40px rgba(220,53,69,0.4);
+}
+
+.result-lost .result-title {
+    color: #dc3545;
+}
+
+.result-lost .result-badge {
+    background: #dc3545;
+    color: white;
+}
+
