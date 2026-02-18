@@ -73,7 +73,7 @@ setInterval(launchConfetti, 25000);
 // ================= JACKPOT COUNTER =================
 const counterElement = document.getElementById("jackpotCounter");
 if (counterElement) {
-    let targetAmount = 50000;
+    let targetAmount = 500000;
     let current = 0;
 
     function updateCounter() {
