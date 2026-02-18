@@ -489,7 +489,7 @@ body {
 .breadcrumb-section {
     margin-top: 90px;
     /* prevents overlap with fixed navbar */
-    padding: 20px 0;
+    padding: 10px 0;
     background: rgba(255, 255, 255, 0.03);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -800,7 +800,7 @@ body {
 .track-section {
     min-height: 100vh;
     background: linear-gradient(-45deg, #0b1f3a, #0e2a4f);
-    padding-top: 120px;
+    /* padding-top: 20px; */
 }
 
 .track-box {

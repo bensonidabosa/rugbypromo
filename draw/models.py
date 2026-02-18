@@ -27,10 +27,17 @@ class Entry(models.Model):
     full_name = models.CharField(max_length=200)
     email = models.EmailField(db_index=True)
     phone_number = models.CharField(max_length=20)
-    country = models.CharField(max_length=100)
-    city = models.CharField(max_length=100)
 
-    draw = models.ForeignKey(Draw, on_delete=models.CASCADE, related_name="entries")
+    country = models.CharField(max_length=100)
+    state = models.CharField(max_length=100)   # ✅ NEW
+    city = models.CharField(max_length=100)
+    zipcode = models.CharField(max_length=20)  # ✅ NEW
+
+    draw = models.ForeignKey(
+        Draw,
+        on_delete=models.CASCADE,
+        related_name="entries"
+    )
 
     ticket_quantity = models.PositiveIntegerField(default=1)
     total_amount = models.DecimalField(max_digits=12, decimal_places=2)
@@ -43,17 +50,32 @@ class Entry(models.Model):
         return f"{self.full_name} - {self.email}"
 
 
+
 # ---------------------------------
 # Individual Tickets (Important!)
 # ---------------------------------
 class Ticket(models.Model):
+    STATUS_PENDING = "PENDING"
+    STATUS_WON = "WON"
+    STATUS_LOST = "LOST"
+
+    STATUS_CHOICES = [
+        (STATUS_PENDING, "Pending"),
+        (STATUS_WON, "Winner"),
+        (STATUS_LOST, "Lost"),
+    ]
+
     entry = models.ForeignKey(Entry, on_delete=models.CASCADE, related_name="tickets")
     draw = models.ForeignKey(Draw, on_delete=models.CASCADE, related_name="tickets")
 
     tracking_code = models.CharField(max_length=20, unique=True, editable=False)
     ticket_number = models.CharField(max_length=20, unique=True, editable=False)
 
-    is_winner = models.BooleanField(default=False)
+    status = models.CharField(
+        max_length=10,
+        choices=STATUS_CHOICES,
+        default=STATUS_PENDING
+    )
     prize_amount = models.DecimalField(max_digits=15, decimal_places=2, null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)

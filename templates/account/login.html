@@ -1,0 +1,65 @@
+{% extends '../frontend/base.html' %}
+{% load static %}
+
+{% block title %}Login Page{% endblock %}
+
+{% block content %}
+<section class="breadcrumb-section fade-in">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb custom-breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{% url 'frontend:home' %}">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    Login
+                </li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<section class="form-section d-flex align-items-center">
+    <div class="container">
+
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-8">
+                <div class="lottery-form-container">
+
+                    <h2 class="text-center mb-4">Login</h2>
+                    <hr class="border-white">
+
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-danger">
+                                {{ message }}
+                            </div>
+                            {% endfor %}
+                        {% endif %}
+
+                        <div class="mb-3">
+                            <input type="text" name="username" class="form-control custom-input" placeholder="Username"
+                                required>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="password" name="password" class="form-control custom-input"
+                                placeholder="Password" required>
+                        </div>
+
+                        <button type="submit" class="btn submit-btn w-100">
+                            LOGIN
+                        </button>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

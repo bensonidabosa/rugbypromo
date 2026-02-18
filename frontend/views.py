@@ -43,6 +43,27 @@ def success(request, tracking_code):
 
 
 def track_ticket_view(request):
+    ticket = None
+    error = None
+
+    if request.method == "POST":
+        tracking_code = request.POST.get("tracking_code", "").strip().upper()
+
+        if not tracking_code:
+            error = "Please enter a tracking code."
+        else:
+            try:
+                ticket = Ticket.objects.select_related("draw", "entry").get(
+                    tracking_code=tracking_code
+                )
+            except Ticket.DoesNotExist:
+                error = "Invalid tracking code. Please check and try again."
+
+    context = {
+        "ticket": ticket,
+        "error": error
+    }
+
     return render(request, 'frontend/track_ticket.html')
 
 

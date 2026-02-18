@@ -31,25 +31,23 @@
                 <div class="track-box">
                     <h1 class="track-title">🎟 Track Your Ticket</h1>
 
-                    <form id="trackForm">
+                    <form id="trackForm" method="post">
+                        {% csrf_token %}
+
                         <input type="text" id="trackInput" class="form-control track-input"
                             placeholder="Enter your tracking code (e.g. RL-ABCD1234)" required>
 
-                        <button type="submit" class="btn hero-btn mt-3">
+                        <button type="submit" class="btn submit-btn mt-3">
                             CHECK RESULT
                         </button>
                     </form>
 
                     <!-- RESULT BOX (Backend will control content) -->
-
+                    {% if ticket %}
                     <div class="result-container mt-5">
 
-                        <!-- Change class below to:
-                    result-winner
-                    result-pending
-                    result-lost
-                -->
-
+                        {% if ticket.status == "WON" %}
+                        <!-- WINNER -->
                         <div class="ticket-result result-winner">
 
                             <div class="result-header">
@@ -58,9 +56,9 @@
                             </div>
 
                             <div class="result-body">
-                                <p><strong>Tracking Code:</strong> RL-ABCD1234</p>
-                                <p><strong>Draw Date:</strong> March 30, 2026</p>
-                                <p><strong>Prize:</strong> $10,000 Grand Prize</p>
+                                <p><strong>Tracking Code:</strong> {{ ticket.tracking_code }}</p>
+                                <p><strong>Draw Date:</strong> {{ ticket.draw.draw_date|date:"F d, Y" }}</p>
+                                <p><strong>Prize:</strong> ${{ ticket.prize_amount|floatformat:2 }}</p>
                             </div>
 
                             <div class="result-footer">
@@ -69,8 +67,51 @@
 
                         </div>
 
-                    </div>
+                        {% elif ticket.status == "PENDING" %}
+                        <!-- PENDING -->
+                        <div class="ticket-result result-pending">
 
+                            <div class="result-header">
+                                <h3 class="result-title">⏳ Draw In Progress</h3>
+                                <span class="result-badge">PENDING</span>
+                            </div>
+
+                            <div class="result-body">
+                                <p><strong>Tracking Code:</strong> {{ ticket.tracking_code }}</p>
+                                <p><strong>Draw Date:</strong> {{ ticket.draw.draw_date|date:"F d, Y" }}</p>
+                                <p><strong>Status:</strong> Awaiting official draw results.</p>
+                            </div>
+
+                            <div class="result-footer">
+                                📢 Results will be announced after the live draw.
+                                Please check back later.
+                            </div>
+
+                        </div>
+
+                        {% elif ticket.status == "LOST" %}
+                        <!-- LOST -->
+                        <div class="ticket-result result-lost">
+
+                            <div class="result-header">
+                                <h3 class="result-title">😢 Not This Time</h3>
+                                <span class="result-badge">NOT A WINNER</span>
+                            </div>
+
+                            <div class="result-body">
+                                <p><strong>Tracking Code:</strong> {{ ticket.tracking_code }}</p>
+                                <p><strong>Draw Date:</strong> {{ ticket.draw.draw_date|date:"F d, Y" }}</p>
+                                <p><strong>Result:</strong> This ticket did not win in this round.</p>
+                            </div>
+
+                            <div class="result-footer">
+                                🎟 Don't give up! Enter the next draw for another chance to win.
+                            </div>
+
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
 
                 </div>
             </div>
@@ -78,5 +119,37 @@
 
     </div>
 </section>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const trackForm = document.getElementById("trackForm");
+        const trackBtn = trackForm ? trackForm.querySelector("button[type='submit']") : null;
+
+        if (trackForm && trackBtn) {
+            trackForm.addEventListener("submit", function (e) {
+                e.preventDefault(); // stop default
+
+                // If input is empty, let browser handle validation
+                if (!trackForm.checkValidity()) {
+                    trackForm.reportValidity();
+                    return;
+                }
+
+                // Disable button to prevent multiple clicks
+                trackBtn.disabled = true;
+
+                // Show spinner
+                trackBtn.innerHTML = `
+                <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                CHECKING...
+            `;
+
+                // Submit form after small delay (optional smooth effect)
+                trackForm.submit();
+            });
+        }
+    });
+</script>
 
 {% endblock %}
