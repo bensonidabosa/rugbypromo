@@ -45,8 +45,8 @@
             <div class="col-md-8">
                 <div class="lottery-form-container">
 
-                    <h2 class="text-center mb-4">Enter The {{draw.title}}</h2>
-                    <!-- <p class="text-warning">${{draw.ticket_price}} per ticket</p> -->
+                    <h2 class="text-center mb-4">Enter Our {{draw.title}}</h2>
+                    <p class="text-warning">{{draw.description}}</p>
                     <form method="POST" novalidate>
                         {% csrf_token %}
 
