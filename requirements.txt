@@ -3,3 +3,4 @@ python-dotenv
 django-cockroachdb==4.2
 psycopg2-binary
 whitenoise
+dj-database-url
