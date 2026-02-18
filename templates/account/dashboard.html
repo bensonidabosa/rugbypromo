@@ -1,0 +1,75 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h2 class="mb-4">All Lottery Applications</h2>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Tracking Code</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Country</th>
+                        <th>City</th>
+                        <th>Status</th>
+                        <th>Prize</th>
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <!-- Django Loop -->
+                    {% for entry in entries %}
+                        {% with ticket=entry.tickets.first %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ ticket.tracking_code }}</td>
+                            <td>{{ entry.full_name }}</td>
+                            <td>{{ entry.email }}</td>
+                            <td>{{ entry.country }}</td>
+                            <td>{{ entry.city }}</td>
+
+                            <td>
+                                {% if ticket.status == "WON" %}
+                                <span class="badge bg-success">WON</span>
+                                {% elif ticket.status == "LOST" %}
+                                <span class="badge bg-danger">LOST</span>
+                                {% else %}
+                                <span class="badge bg-warning text-dark">PENDING</span>
+                                {% endif %}
+                            </td>
+
+                            <td>
+                                {% if ticket.prize_amount %}
+                                ${{ ticket.prize_amount }}
+                                {% else %}
+                                —
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="" class="btn btn-info btn-sm text-white">Update</a>
+                                <a href="" class="btn btn-danger btn-sm text-white">Delete</a>
+                            </td>
+                        </tr>
+                        {% endwith %}
+                    {% empty %}
+                    <tr>
+                        <td colspan="8" class="text-center">No entries found.</td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

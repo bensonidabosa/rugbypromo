@@ -57,14 +57,14 @@ def track_ticket_view(request):
                     tracking_code=tracking_code
                 )
             except Ticket.DoesNotExist:
-                error = "Invalid tracking code. Please check and try again."
+                error = "Invalid tracking code. Please check the code and try again."
 
     context = {
         "ticket": ticket,
         "error": error
     }
 
-    return render(request, 'frontend/track_ticket.html')
+    return render(request, 'frontend/track_ticket.html', context)
 
 
 # @transaction.atomic

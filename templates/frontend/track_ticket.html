@@ -30,11 +30,14 @@
             <div class="col-md-7 mb-5">
                 <div class="track-box">
                     <h1 class="track-title">🎟 Track Your Ticket</h1>
+                    {% if error %}
+                        <p class="text-danger">{{error}}</p>
+                    {% endif %}
 
                     <form id="trackForm" method="post">
                         {% csrf_token %}
 
-                        <input type="text" id="trackInput" class="form-control track-input"
+                        <input type="text" id="trackInput" name="tracking_code" class="form-control track-input"
                             placeholder="Enter your tracking code (e.g. RL-ABCD1234)" required>
 
                         <button type="submit" class="btn submit-btn mt-3">
@@ -72,7 +75,7 @@
                         <div class="ticket-result result-pending">
 
                             <div class="result-header">
-                                <h3 class="result-title">⏳ Draw In Progress</h3>
+                                <h3 class="result-title">⏳ Lottery In Progress</h3>
                                 <span class="result-badge">PENDING</span>
                             </div>
 
