@@ -1,0 +1,983 @@
+/* ================= GLOBAL ================= */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #0b1f3a;
+    color: white;
+    overflow-x: hidden;
+}
+
+.gold-text {
+    color: #b87300;
+}
+
+
+/* =======fade in animation =========== */
+.fade-in {
+    opacity: 0;
+    animation: fadeInSmooth 1s ease forwards;
+}
+
+@keyframes fadeInSmooth {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ================= NAVBAR ================= */
+
+.custom-navbar {
+    background: transparent;
+    transition: 0.4s;
+}
+
+.custom-navbar.scrolled {
+    background: rgba(11, 31, 58, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.navbar-brand img {
+    width: 120px !important;
+}
+
+.footer-logo {
+    width: 160px;
+}
+
+.nav-item-custom {
+    color: white !important;
+    margin-left: 20px;
+    transition: 0.3s;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.nav-item-custom:hover {
+    color: #fff !important;
+    background-color: #b87300 !important;
+}
+
+/* ================= HERO SECTION ================= */
+.hero-section {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(-45deg, #0b1f3a, #102c54, #09172b, #1a3b6b);
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Image Overlay */
+
+.hero-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('/static/frontend/images/hero/hero-1.jpg') center/cover no-repeat;
+    opacity: 0.45;
+    z-index: 1;
+}
+
+/* Hero content above overlay */
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+}
+
+.hero-content .hero-title {
+    font-size: 120px;
+}
+
+.hero-content .hero-subtitle {
+    font-size: 30px;
+}
+
+.hero-btn {
+    position: relative;
+    overflow: hidden;
+    background-color: #b87300;
+    /* background-color: #e10600; */
+    padding-inline: 20px;
+    font-size: 16px;
+    width: 200px;
+    color: #fff;
+    /* margin-bottom: 10px; */
+}
+
+.submit-btn {
+    position: relative;
+    overflow: hidden;
+    background-color: #b87300;
+    /* background-color: #e10600; */
+    padding-inline: 20px;
+    font-size: 16px;
+    width: 200px;
+    color: #fff;
+    /* margin-bottom: 10px; */
+}
+
+/* Shine effect */
+.hero-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg,
+            transparent,
+            rgba(97, 20, 20, 0.6),
+            transparent);
+    transform: skewX(-25deg);
+}
+
+.hero-btn:hover::before {
+    animation: shine 0.8s forwards;
+}
+
+@keyframes shine {
+    100% {
+        left: 125%;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-content .hero-title {
+        font-size: 70px;
+    }
+
+    .hero-content .hero-subtitle {
+        font-size: 18px;
+    }
+
+    .navbar-collapse {
+        background: #1a1919 !important;
+        padding-block: 20px;
+    }
+
+    .nav-item-custom {
+        font-size: 14px;
+    }
+
+    .navbar-brand img {
+        width: 80px !important;
+    }
+
+    .footer-logo {
+        width: 100px;
+    }
+}
+
+/* ================= PARTICLES ================= */
+
+.particles span {
+    position: absolute;
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: #f4b400;
+    border-radius: 50%;
+    animation: moveParticles 10s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes moveParticles {
+    0% {
+        transform: translateY(100vh) scale(0);
+    }
+
+    100% {
+        transform: translateY(-10vh) scale(1);
+    }
+}
+
+/* ================= SLIDE ANIMATIONS ================= */
+
+.slide-down {
+    animation: slideDown 1.2s ease forwards;
+}
+
+.slide-up {
+    animation: slideUp 1.5s ease forwards;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================= RUGBY BALL ================= */
+
+.rugby-ball {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle at 30% 30%, #f4b400, #b87300);
+    border-radius: 50%;
+    bottom: 60px;
+    right: 100px;
+    z-index: 2;
+    animation: floatRotate 4s ease-in-out infinite;
+}
+
+@keyframes floatRotate {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-25px) rotate(180deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(360deg);
+    }
+}
+/*  ======== Hero End ================ */
+
+/*  ======== About Us ================ */
+.section-title {
+    color: #f4b400;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.about-section {
+    background: #0e2a4f;
+}
+
+.about-img {
+    max-height: 450px;
+    filter: drop-shadow(0 0 20px rgba(244,180,0,0.4));
+}
+
+/*  ======== About Us  End ================ */
+
+
+/* ========== About Our Exclusive Lottery ============ */
+.exclusive-section {
+    background: #09172b;
+}
+
+.exclusive-card {
+    background: rgba(255,255,255,0.05);
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    transition: 0.4s;
+}
+
+.exclusive-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 30px rgba(244,180,0,0.4);
+}
+/* ========== About Our Exclusive Lottery End ============ */
+
+
+/* ================ features =================  */
+/* featured Cards */
+.features-section {
+    background: #09172b;
+    color: white;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #f4b400;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 15px;
+    transition: 0.4s;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature-card:hover {
+    transform: translateY(-15px) scale(1.05);
+    box-shadow: 0 0 25px rgba(244, 180, 0, 0.6);
+}
+
+
+/*  feature animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 1s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* confetti */
+.confetti {
+    position: fixed;
+    top: 0;
+    width: 8px;
+    height: 8px;
+    opacity: 0.9;
+    animation: fall linear forwards;
+    z-index: 9999;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0);
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+    }
+}
+
+
+/* ========= How to get Started ===========  */
+.steps-section {
+    background: #0b1f3a;
+}
+
+.step-box {
+    background: rgba(255,255,255,0.05);
+    padding: 25px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.step-box:hover {
+    transform: scale(1.05);
+}
+/* ========= How to get Started End ===========  */
+
+/*  ========== Sponsors ============== */
+.sponsors-section {
+    background: #09172b;
+}
+
+.sponsor-logo {
+    max-height: 60px;
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.sponsor-logo:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+/*  ========== Sponsors End ============== */
+
+/* ================= JACKPOT SECTION ================= */
+
+.jackpot-section {
+    background: #0b1f3a;
+    color: white;
+}
+
+.jackpot-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #f4b400;
+}
+
+.jackpot-box {
+    margin-top: 40px;
+    padding: 40px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid #f4b400;
+    box-shadow: 0 0 30px rgba(244, 180, 0, 0.6);
+    animation: jackpotPulse 2s infinite alternate;
+}
+
+@keyframes jackpotPulse {
+    from {
+        box-shadow: 0 0 20px rgba(244, 180, 0, 0.5);
+    }
+
+    to {
+        box-shadow: 0 0 40px rgba(244, 180, 0, 1);
+    }
+}
+
+.jackpot-amount {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #f4b400;
+}
+
+.countdown-timer {
+    font-size: 1.5rem;
+    margin-top: 15px;
+    letter-spacing: 2px;
+    color: #e10600;
+}
+
+
+/* ================= LIVE ACTIVITY ================= */
+.live-activity {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background: rgba(11, 31, 58, 0.95);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    border-left: 5px solid #f4b400;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    transform: translateX(-120%);
+    opacity: 0;
+    transition: all 0.5s ease;
+    z-index: 9999;
+    font-size: 0.9rem;
+}
+
+.live-activity.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.live-activity strong {
+    color: #f4b400;
+}
+
+/* testimonial */
+.testimonial-text {
+    font-size: 1.3rem;
+    font-style: italic;
+}
+
+
+/* t6ickeer */
+.ticker {
+    width: 100%;
+    background: #e10600;
+    overflow: hidden;
+    white-space: nowrap;
+    color: white;
+    font-weight: bold;
+}
+
+.ticker-content {
+    display: inline-block;
+    padding-left: 100%;
+    animation: tickerMove 55s linear infinite;
+}
+
+@keyframes tickerMove {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .jackpot-amount {
+        font-size: 2.5rem;
+    }
+
+    .rugby-ball {
+        width: 80px;
+        height: 80px;
+        right: 20px;
+        bottom: 20px;
+    }
+
+    .rugby-ball img {
+        width: 80px !important;
+    }
+
+    .live-activity {
+        left: 10px;
+        right: 10px;
+        bottom: 15px;
+        font-size: 0.8rem;
+    }
+
+}
+
+
+/* ================= BREADCRUMB ================= */
+
+.breadcrumb-section {
+    margin-top: 90px;
+    /* prevents overlap with fixed navbar */
+    padding: 10px 0;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.custom-breadcrumb {
+    background: transparent;
+    margin-bottom: 0;
+}
+
+.custom-breadcrumb .breadcrumb-item a {
+    color: #f4b400;
+    text-decoration: none;
+    position: relative;
+    transition: 0.3s;
+}
+
+.custom-breadcrumb .breadcrumb-item a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: -3px;
+    background: #e10600;
+    transition: 0.3s;
+}
+
+.custom-breadcrumb .breadcrumb-item a:hover::after {
+    width: 100%;
+}
+
+.custom-breadcrumb .breadcrumb-item a:hover {
+    color: #e10600;
+}
+
+
+.custom-breadcrumb .breadcrumb-item.active {
+    color: white;
+    font-weight: bold;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    color: #f4b400;
+}
+
+
+/* ================= LOTTERY PAGE ================= */
+
+.lottery-page {
+    background: linear-gradient(-45deg, #0b1f3a, #102c54);
+    min-height: 100vh;
+}
+
+.form-section {
+    min-height: 100vh;
+}
+
+.lottery-form-container {
+    max-width: 100%;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px rgba(244, 180, 0, 0.3);
+}
+
+.custom-input {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+/* Placeholder color */
+.custom-input::placeholder {
+    color: white;
+    opacity: 1;
+    /* Ensures full white (some browsers reduce opacity by default) */
+}
+
+/* On focus */
+.custom-input:focus {
+    border-color: #f4b400;
+    box-shadow: 0 0 15px rgba(244, 180, 0, 0.5);
+    background: transparent;
+    color: white;
+}
+
+/* Optional: Keep placeholder white even when focused */
+.custom-input:focus::placeholder {
+    color: white;
+    opacity: 1;
+}
+
+.form-message {
+    font-weight: bold;
+}
+
+
+/* ================= SUCCESS PAGE ================= */
+
+.success-page {
+    background: linear-gradient(-45deg, #0b1f3a, #102c54);
+    min-height: 100vh;
+}
+
+.success-section {
+    min-height: 100vh;
+}
+
+.success-box {
+    max-width: 600px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 50px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(244, 180, 0, 0.4);
+    animation: fadeInSmooth 1s ease forwards;
+}
+
+.success-title {
+    color: #f4b400;
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+
+.tracking-code-box {
+    margin: 30px 0;
+    padding: 20px;
+    border: 2px solid #f4b400;
+    border-radius: 10px;
+    background: rgba(244, 180, 0, 0.1);
+}
+
+.tracking-code-box h3 {
+    margin-top: 10px;
+    color: #ffffff;
+    letter-spacing: 2px;
+}
+
+.email-info {
+    margin-top: 20px;
+    font-size: 1rem;
+}
+
+
+
+/* ================= FOOTER ================= */
+
+.premium-footer {
+    position: relative;
+    background: linear-gradient(-45deg, #09172b, #0b1f3a, #081424);
+    background-size: 400% 400%;
+    animation: footerGradient 15s ease infinite;
+    padding: 60px 0 25px;
+    color: white;
+    overflow: hidden;
+}
+
+@keyframes footerGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.footer-glow-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #e10600, #f4b400, #e10600);
+    box-shadow: 0 0 20px rgba(225, 6, 0, 0.8);
+}
+
+.footer-brand {
+    color: #f4b400;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.footer-tagline {
+    opacity: 0.8;
+    font-size: 0.95rem;
+}
+
+.footer-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-nav li {
+    /* display: inline-block; */
+    margin: 15px 8px;
+}
+
+.footer-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: 0.3s;
+}
+
+.footer-nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: -4px;
+    background: #f4b400;
+    transition: 0.3s;
+}
+
+.footer-nav a:hover::after {
+    width: 100%;
+}
+
+.footer-nav a:hover,
+.footer-info:hover,
+.footer-info a:hover {
+    color: #f4b400;
+}
+
+.footer-info {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+.highlight {
+    color: #e10600;
+    font-weight: bold;
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    font-size: 0.85rem;
+    opacity: 0.7;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+}
+
+
+/* ================= TRACK PAGE ================= */
+
+.track-section {
+    min-height: 100vh;
+    background: linear-gradient(-45deg, #0b1f3a, #0e2a4f);
+    /* padding-top: 20px; */
+}
+
+.track-box {
+    max-width: 100%;
+    margin: auto;
+    background: rgba(255,255,255,0.05);
+    padding: 50px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(244,180,0,0.3);
+    animation: fadeInSmooth 1s ease forwards;
+}
+
+.track-title {
+    color: #f4b400;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.track-input {
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    text-align: center;
+    font-weight: bold;
+}
+
+.result-area {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.6s ease;
+}
+
+.result-area.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.status-winner {
+    background: #28a745;
+    color: white;
+}
+
+.status-lost {
+    background: #dc3545;
+    color: white;
+}
+
+.status-pending {
+    background: #f4b400;
+    color: black;
+}
+
+/* ================= RESULT BOX ================= */
+
+.result-container {
+    max-width: 700px;
+    margin: auto;
+}
+
+.ticket-result {
+    padding: 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.05);
+    border: 2px solid transparent;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+    transition: 0.4s ease;
+    animation: fadeInSmooth 0.8s ease forwards;
+}
+
+/* HEADER */
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.result-title {
+    font-weight: bold;
+    margin: 0;
+}
+
+/* BADGE */
+
+.result-badge {
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* BODY */
+
+.result-body p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+/* FOOTER */
+
+.result-footer {
+    margin-top: 25px;
+    font-size: 0.95rem;
+    opacity: 0.85;
+}
+
+/* ================= STATE STYLES ================= */
+
+/* WINNER */
+
+.result-winner {
+    border-color: #28a745;
+    box-shadow: 0 0 40px rgba(40,167,69,0.4);
+}
+
+.result-winner .result-title {
+    color: #28a745;
+}
+
+.result-winner .result-badge {
+    background: #28a745;
+    color: white;
+}
+
+/* PENDING */
+
+.result-pending {
+    border-color: #f4b400;
+    box-shadow: 0 0 40px rgba(244,180,0,0.4);
+}
+
+.result-pending .result-title {
+    color: #f4b400;
+}
+
+.result-pending .result-badge {
+    background: #f4b400;
+    color: black;
+}
+
+/* LOST */
+
+.result-lost {
+    border-color: #dc3545;
+    box-shadow: 0 0 40px rgba(220,53,69,0.4);
+}
+
+.result-lost .result-title {
+    color: #dc3545;
+}
+
+.result-lost .result-badge {
+    background: #dc3545;
+    color: white;
+}
+
