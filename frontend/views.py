@@ -1,8 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.db import transaction
+import logging
 
 from draw.models import Entry, Ticket, Draw
 from draw.forms import EntryForm
+from .utils import send_html_email
+
+logger = logging.getLogger(__name__)
 
 def home_view(request):
     return render(request, 'frontend/index.html')
@@ -12,7 +16,6 @@ def contact_view(request):
 
 @transaction.atomic
 def enter_draw_view(request):
-    # Fetch the first active draw
     draw = get_object_or_404(Draw, is_active=True)
 
     if request.method == "POST":
@@ -21,23 +24,46 @@ def enter_draw_view(request):
             entry = form.save(commit=False)
             entry.draw = draw
             entry.total_amount = entry.ticket_quantity * draw.ticket_price
-            entry.payment_verified = True  # change later when adding real payment
+            entry.payment_verified = True  # change later for real payments
             entry.save()
 
             tickets = []
             for _ in range(entry.ticket_quantity):
                 ticket = Ticket.objects.create(entry=entry, draw=draw)
                 tickets.append(ticket)
+
             first_ticket = tickets[0] if tickets else None
+
+            # ✅ Send email safely after commit
+            def send_confirmation_email():
+                try:
+                    send_html_email(
+                        subject="Your Rugby Lottery Entry Has Been Confirmed 🎟️",
+                        to_email=entry.email,
+                        template_name="frontend/emails/lottery_entry.html",
+                        context={
+                            "name": entry.full_name,
+                            "tracking_code": first_ticket.tracking_code,
+                        }
+                    )
+                except Exception as e:
+                    logger.error(f"Email failed for Entry ID {entry.id}: {str(e)}")
+
+            transaction.on_commit(send_confirmation_email)
+
             return render(request, "frontend/success.html", {
                 "tickets": tickets,
                 "entry": entry,
-                "first_ticket":first_ticket
+                "first_ticket": first_ticket
             })
+
     else:
         form = EntryForm()
 
-    return render(request, "frontend/enter_draw.html", {"form": form, "draw": draw})
+    return render(request, "frontend/enter_draw.html", {
+        "form": form,
+        "draw": draw
+    })
 
 def success(request, tracking_code):
     return render(request, "frontend/success.html", {"tracking_code": tracking_code})

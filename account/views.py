@@ -3,9 +3,14 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.urls import reverse
+from django.db import transaction
+import logging
 
 from draw.models import Entry, Ticket
 from draw.forms import TicketForm
+from frontend.utils import send_html_email
+
+logger = logging.getLogger(__name__)
 
 def login_view(request):
     if request.user.is_authenticated:
@@ -42,19 +47,49 @@ def dashboard_view(request):
 
 
 @login_required(login_url="account:login")
+@transaction.atomic
 def edit_ticket_view(request, ticket_id):
     ticket = get_object_or_404(Ticket, id=ticket_id)
+
     if request.method == "POST":
+        old_status = ticket.status  # ✅ Store previous status
         form = TicketForm(request.POST, instance=ticket)
+
         if form.is_valid():
-            form.save()
-            messages.success(request, 'Ticket was Updated successfully')
-            return redirect('account:dashboard')  # replace with your URL
+            updated_ticket = form.save()
+
+            # ✅ Only send email if status changed TO WON
+            if old_status != Ticket.STATUS_WON and updated_ticket.status == Ticket.STATUS_WON:
+
+                def send_winner_email():
+                    try:
+                        send_html_email(
+                            subject="🎉 Congratulations! You're a Winner!",
+                            to_email=updated_ticket.entry.email,
+                            template_name="fropntend/emails/winners_notification.html",
+                            context={
+                                "full_name": updated_ticket.entry.full_name,
+                                "tracking_code": updated_ticket.tracking_code,
+                                "prize_amount": updated_ticket.prize_amount,
+                            }
+                        )
+                    except Exception as e:
+                        logger.error(
+                            f"Winner email failed for Ticket ID {updated_ticket.id}: {str(e)}"
+                        )
+
+                transaction.on_commit(send_winner_email)
+
+            messages.success(request, "Ticket was updated successfully")
+            return redirect("account:dashboard")
+
     else:
-        messages.error(request, 'Something went wrong, please try again')
         form = TicketForm(instance=ticket)
 
-    return render(request, 'account/edit_ticket.html', {'form': form, 'ticket':ticket})
+    return render(request, "account/edit_ticket.html", {
+        "form": form,
+        "ticket": ticket
+    })
 
 
 def delete_entry_view(request, entry_id):

@@ -53,7 +53,7 @@ function launchConfetti() {
 // Trigger confetti safely
 const enterBtn = document.querySelector(".hero-btn");
 if (enterBtn) {
-    enterBtn.addEventListener("click", function(e) {
+    enterBtn.addEventListener("click", function (e) {
         e.preventDefault();
         launchConfetti();
 
@@ -73,7 +73,7 @@ setInterval(launchConfetti, 25000);
 // ================= JACKPOT COUNTER =================
 const counterElement = document.getElementById("jackpotCounter");
 if (counterElement) {
-    let targetAmount = 500000;
+    let targetAmount = 250000000;
     let current = 0;
 
     function updateCounter() {
@@ -114,18 +114,97 @@ const liveMessage = document.getElementById("liveMessage");
 
 if (liveActivity && liveMessage) {
     const names = [
+        // Europe
         "Luca", "Sofia", "Mateo", "Giulia", "Noah", "Emma", "Oliver", "Charlotte",
-        "Hiroshi", "Yuki", "Arjun", "Priya", "James", "Olivia", "Thiago", "Valentina",
-        "Jack", "Isla", "Leo", "Ruby", "Hunter", "Aria", "Zara", "Finn"
+        "Hugo", "Camille", "Liam", "Freya", "Marta", "Alejandro", "Isabella",
+        "Sebastian", "Elena", "Nikolai", "Anastasia", "Erik", "Ingrid",
+        "Rafael", "Beatriz", "Tomas", "Zoe",
+
+        // Asia
+        "Hiroshi", "Yuki", "Arjun", "Priya", "Wei", "Mei", "Jin", "Soo-min",
+        "Omar", "Fatima", "Chen", "Ananya", "Rahul", "Aiko", "Min-jun",
+        "Kazuki", "Rina", "Tenzin", "Niran", "Siti", "Azlan",
+        "Reza", "Leila", "Thao", "Bao",
+
+        // North America
+        "James", "Olivia", "Ethan", "Ava", "Logan", "Mia", "Benjamin", "Amelia",
+        "Elijah", "Harper", "Lucas", "Emily", "Daniel", "Scarlett",
+        "Jack", "Chloe", "Wyatt", "Lily", "Owen", "Grace",
+        "Caleb", "Victoria", "Isaac", "Hannah",
+
+        // South America
+        "Thiago", "Valentina", "Santiago", "Camila", "Mateus", "Antonella",
+        "Diego", "Gabriela", "Juan", "Mariana", "Carlos", "Luisa",
+        "Andres", "Fernanda", "Bruno", "Isadora", "Renato", "Paula",
+        "Joaquin", "Daniela",
+
+        // Oceania
+        "Jack", "Isla", "Noah", "Matilda", "Leo", "Ruby",
+        "Hunter", "Aria", "Zara", "Finn"
     ];
+
     const cities = [
-        "London", "Paris", "Berlin", "Tokyo", "Beijing", "New York", "Los Angeles",
-        "São Paulo", "Rio de Janeiro", "Sydney", "Melbourne", "Auckland"
+        // Europe
+        "London", "Paris", "Berlin", "Madrid", "Rome", "Lisbon", "Amsterdam",
+        "Vienna", "Prague", "Dublin", "Warsaw", "Athens", "Copenhagen",
+        "Barcelona", "Milan", "Munich", "Brussels", "Stockholm",
+        "Budapest", "Zurich", "Edinburgh",
+
+        // Asia
+        "Tokyo", "Beijing", "Shanghai", "Seoul", "Bangkok", "Singapore",
+        "Mumbai", "Delhi", "Jakarta", "Manila", "Kuala Lumpur", "Dubai",
+        "Osaka", "Hong Kong", "Hanoi", "Taipei", "Doha",
+        "Riyadh", "Colombo", "Kathmandu",
+
+        // North America
+        "New York", "Los Angeles", "Chicago", "Toronto", "Vancouver",
+        "Mexico City", "Houston", "Miami", "San Francisco", "Boston",
+        "Seattle", "Atlanta", "Montreal", "Las Vegas",
+        "Philadelphia", "San Diego", "Dallas",
+
+        // South America
+        "São Paulo", "Rio de Janeiro", "Buenos Aires", "Santiago",
+        "Lima", "Bogotá", "Caracas", "Quito", "Montevideo",
+        "Asunción", "La Paz", "Medellín", "Curitiba",
+
+        // Oceania
+        "Sydney", "Melbourne", "Brisbane", "Perth",
+        "Auckland", "Wellington", "Adelaide", "Gold Coast"
     ];
+
+
+
     const actions = [
-        "just entered the draw!", "won $250!", "purchased 5 tickets!",
-        "won the grand prize!", "hit the jackpot!", "won free tickets!"
+        "just entered the draw!",
+        "purchased 5 tickets!",
+        "joined the Rugby Lottery!",
+
+        // Major winning actions (minimum $1,200,000)
+        "won $1,200,000!",
+        "won $1,500,000!",
+        "won $2,000,000!",
+        "won $5,000,000!",
+        "won $10,000,000!",
+        "won $25,000,000!",
+        "won $50,000,000!",
+        "won $100,000,000!",
+        "won $250,000,000!",
+
+        // Big prize variations
+        "won the $1,200,000 grand prize!",
+        "hit the $5,000,000 jackpot!",
+        "claimed $2,500,000 in winnings!",
+        "secured a $3,000,000 cash reward!",
+        "won $7,500,000 in the weekly draw!",
+        "took home $15,000,000!",
+        "just scored $4,000,000!",
+        "won a $6,000,000 bonus prize!",
+        "won the $20,000,000 mega prize!",
+        "just doubled their $1,200,000 winnings!",
+        "won an exclusive $8,000,000 reward!",
+        "won big today - $12,000,000!"
     ];
+
 
     function showLiveActivity() {
         const randomName = names[Math.floor(Math.random() * names.length)];
@@ -143,7 +222,7 @@ if (liveActivity && liveMessage) {
 
 // ================= SMOOTH SCROLL =================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function(e) {
+    anchor.addEventListener("click", function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute("href"));
         if (target) {

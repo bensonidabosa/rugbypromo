@@ -54,8 +54,8 @@
 
             <div class="col-md-4 text-md-center mb-4 mb-md-0">
                 <ul class="footer-nav">
-                    <li><a href="{% url 'frontend:home' %}">Home</a></li>
-                    <li><a href="{% url 'frontend:apply' %}">Enter Lottery</a></li>
+                    <li><a href="{% url 'frontend:home' %}"  class="mb-3">Home</a></li>
+                    <li><a href="{% url 'frontend:apply' %}" class="mb-3">Enter Lottery</a></li>
                     <li><a href="{% url 'frontend:track_ticket' %}">Track ticket</a></li>
                 </ul>
             </div>
@@ -65,8 +65,26 @@
                     Next Draw: <span class="highlight">Sunday 8PM</span>
                 </p> -->
                 <p class="footer-info">
-                    contact@rugbywinnerslottery.com
+                    Email:
+                    <a href="mailto:contact@rugbywinnerslottery.com" class="text-decoration-none text-white">
+                        contact@rugbywinnerslottery.com
+                    </a>
                 </p>
+
+                <p class="footer-info">
+                    Phone:
+                    <a href="tel:+1740466094" class="text-decoration-none text-white">
+                        +1 (740) 466-094
+                    </a>
+                </p>
+
+                <p class="footer-info">
+                    WhatsApp:
+                    <a href="https://wa.me/1740466094" target="_blank" class="text-decoration-none text-white">
+                        +1 (740) 466-094
+                    </a>
+                </p>
+
             </div>
 
         </div>
@@ -77,4 +95,3 @@
     </div>
 
 </footer>
-
