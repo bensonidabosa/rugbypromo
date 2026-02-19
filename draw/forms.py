@@ -1,5 +1,5 @@
 from django import forms
-from .models import Entry
+from .models import Entry, Ticket
 
 class EntryForm(forms.ModelForm):
     # ticket_quantity = forms.IntegerField(
@@ -73,4 +73,34 @@ class EntryForm(forms.ModelForm):
     #     if qty > 100:
     #         raise forms.ValidationError("Maximum 100 tickets per purchase.")
     #     return qty
+
+
+
+class TicketForm(forms.ModelForm):
+    class Meta:
+        model = Ticket
+        # Only include fields that make sense to edit
+        fields = ['status', 'prize_amount']
+        widgets = {
+            'status': forms.Select(attrs={'class': 'form-control'}),
+            'prize_amount': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}),
+        }
+        labels = {
+            'status': 'Ticket Status',
+            'prize_amount': 'Prize Amount',
+        }
+        widgets = {
+            'status': forms.Select(
+                attrs={
+                    'class': 'form-select',  # Bootstrap select
+                }
+            ),
+            'prize_amount': forms.NumberInput(
+                attrs={
+                    'class': 'form-control',  # Bootstrap input
+                    'step': '0.01',
+                    'placeholder': 'Enter prize amount'
+                }
+            ),
+        }
 

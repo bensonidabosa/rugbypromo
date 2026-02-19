@@ -1,5 +1,6 @@
 {% extends './base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block title %}Enter Lottery | Rugby Lottery{% endblock %}
 
@@ -60,8 +61,9 @@
 
                             <div class="result-body">
                                 <p><strong>Tracking Code:</strong> {{ ticket.tracking_code }}</p>
-                                <p><strong>Draw Date:</strong> {{ ticket.draw.draw_date|date:"F d, Y" }}</p>
-                                <p><strong>Prize:</strong> ${{ ticket.prize_amount|floatformat:2 }}</p>
+                                <p><strong>Entry Date:</strong> {{ ticket.created_at|date:"F d, Y"|naturaltime }}</p>
+                                <p><strong>Prize:</strong> ${{ ticket.prize_amount|floatformat:2|intcomma }}</p>
+                                <!-- <p><strong>Created:</strong> ${{ ticket.created_at|naturaltime }}</p> -->
                             </div>
 
                             <div class="result-footer">
@@ -81,7 +83,7 @@
 
                             <div class="result-body">
                                 <p><strong>Tracking Code:</strong> {{ ticket.tracking_code }}</p>
-                                <p><strong>Draw Date:</strong> {{ ticket.draw.draw_date|date:"F d, Y" }}</p>
+                                <p><strong>Entry Date:</strong> {{ ticket.created_at|date:"F d, Y" }}</p>
                                 <p><strong>Status:</strong> Awaiting official draw results.</p>
                             </div>
 
@@ -103,7 +105,7 @@
 
                             <div class="result-body">
                                 <p><strong>Tracking Code:</strong> {{ ticket.tracking_code }}</p>
-                                <p><strong>Draw Date:</strong> {{ ticket.draw.draw_date|date:"F d, Y" }}</p>
+                                <p><strong>Entry Date:</strong> {{ ticket.created_at|date:"F d, Y" }}</p>
                                 <p><strong>Result:</strong> This ticket did not win in this round.</p>
                             </div>
 

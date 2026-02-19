@@ -1,0 +1,21 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <h5 class="mb-3 text-center mt-3">Edit Ticket For {{ticket.entry.full_name}}</h5>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-dark w-100 fw-bold">Update Ticket</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

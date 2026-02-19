@@ -28,10 +28,11 @@ def enter_draw_view(request):
             for _ in range(entry.ticket_quantity):
                 ticket = Ticket.objects.create(entry=entry, draw=draw)
                 tickets.append(ticket)
-
+            first_ticket = tickets[0] if tickets else None
             return render(request, "frontend/success.html", {
                 "tickets": tickets,
                 "entry": entry,
+                "first_ticket":first_ticket
             })
     else:
         form = EntryForm()
