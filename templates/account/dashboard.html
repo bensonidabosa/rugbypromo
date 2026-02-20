@@ -13,10 +13,11 @@
             <table class="table table-striped table-hover align-middle">
                 <thead class="table-dark">
                     <tr>
-                        <th>#</th>
+                        <!-- <th>#</th> -->
                         <th>Tracking Code</th>
                         <th>Full Name</th>
                         <th>Email</th>
+                        <th>Phone</th>
                         <th>Country</th>
                         <th>City</th>
                         <th>Status</th>
@@ -31,10 +32,11 @@
                     {% for entry in entries %}
                         {% with ticket=entry.tickets.first %}
                         <tr>
-                            <td>{{ forloop.counter }}</td>
+                            <!-- <td>{{ forloop.counter }}</td> -->
                             <td>{{ ticket.tracking_code }}</td>
                             <td>{{ entry.full_name }}</td>
                             <td>{{ entry.email }}</td>
+                            <td>{{ entry.phone_number }}</td>
                             <td>{{ entry.country }}</td>
                             <td>{{ entry.city }}</td>
 
